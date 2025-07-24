@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VoidScan – Minimal Port Scanner</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+</head>
+<body>
+  <!-- 
+    OSINT hint: GPS coordinates 48.8566, 2.3522
+    GitLab ID: 37482
+    Twitter: @hack_the_void #SilentScan
+  -->
+  <div class="container">
+    <header>
+      <div class="logo">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- GPS: 48.8566,2.3522 -->
+          <circle cx="24" cy="24" r="22" stroke="#00FFCC" stroke-width="3"/>
+          <path d="M14 24L24 14L34 24L24 34L14 24Z" fill="#00FFCC"/>
+        </svg>
+      </div>
+      <h1>VOIDSCAN</h1>
+      <p class="tagline">Minimal port scanner built for silence.</p>
+      <button id="modeToggle" aria-label="Toggle Dark/Light Mode">🌙</button>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#documentation">Documentation</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#changelog">Changelog</a></li>
+      </ul>
+    </nav>
+
+    <main>
+
+      <section id="overview">
+        <h2>📄 Overview</h2>
+        <p>
+          VoidScan is an open-source minimalistic port scanner designed for cybersecurity professionals and pentesters who require stealthy and efficient network scans. Written in Rust for performance and safety, it focuses on minimizing detection by target systems while delivering reliable scan results.
+        </p>
+        <p>
+          Initiated in 2023 by the VoidLab team, VoidScan was born out of the need for a lightweight yet powerful tool that avoids the common pitfalls of noisy scanning utilities. It supports both TCP and UDP scanning modes and provides detailed logs for forensic analysis.
+        </p>
+        <p>
+          The project follows a strict no telemetry, no data collection policy, respecting user privacy and operational security.
+        </p>
+      </section>
+
+      <section id="features">
+        <h2>✨ Features</h2>
+        <ul>
+          <li>Stealth TCP and UDP scanning modes with customizable timing.</li>
+          <li>Advanced thread pool to optimize scan speed without overwhelming networks.</li>
+          <li>Detailed logging in <code>logs/trace.log</code> with session metadata.</li>
+          <li>Output formats: JSON, XML, CSV for integration in SIEM tools.</li>
+          <li>Lightweight footprint & zero dependencies outside Rust standard libraries.</li>
+          <li>Extensible plugin system planned for future versions.</li>
+          <li>Supports IPv4 and IPv6 targets.</li>
+          <li>Minimal false positives with adaptive timeout strategies.</li>
+        </ul>
+      </section>
+
+      <section id="installation">
+        <h2>⚙️ Installation</h2>
+        <p>Clone the repository and build with <code>cargo</code>:</p>
+        <pre><code>git clone https://gitlab.com/void/voidscan.git
+cd voidscan
+cargo build --release
+</code></pre>
+        <p>
+          You can also download precompiled binaries from the <a href="https://gitlab.com/void/voidscan/-/releases" target="_blank" rel="noopener noreferrer">Releases page</a>.
+        </p>
+      </section>
+
+      <section id="usage">
+        <h2>🧪 Usage</h2>
+        <p>Basic command to scan all TCP ports on an IP:</p>
+        <pre><code>./voidscan -t 10.0.0.1 -p 1-65535</code></pre>
+        <p>Scan UDP ports with <code>-u</code> flag:</p>
+        <pre><code>./voidscan -t 10.0.0.1 -p 53-53 -u</code></pre>
+        <p>Logs are saved in <code>logs/trace.log</code>. You can change output format with <code>-o json</code>, <code>-o xml</code>, or <code>-o csv</code>.</p>
+        <p>Run <code>./voidscan --help</code> for full options.</p>
+      </section>
+
+      <section id="documentation">
+        <h2>📚 Documentation</h2>
+        <p>
+          The <code>logs/trace.log</code> file contains detailed scan sessions, including timestamps, open ports, and user tags.<br />
+          The log format is plain text for easy parsing, with entries such as:
+        </p>
+        <pre><code># Trace Log - VoidScan v0.3.1-alpha
+Timestamp: 2025-07-15T14:35:02Z
+User: hack_the_void
+Open ports: 22, 80, 443
+GPS coords: 48.8566, 2.3522
+Notes: Silent mode enabled</code></pre>
+        <p>
+          For further information, see the <a href="https://gitlab.com/void/voidscan/wikis/home" target="_blank" rel="noopener noreferrer">VoidScan Wiki</a>.
+        </p>
+        <p>
+          <strong>Note:</strong> All development follows strict security guidelines and no personal data is collected.
+        </p>
+      </section>
+
+      <section id="faq">
+        <h2>❓ FAQ</h2>
+        <dl>
+          <dt>Is VoidScan detectable by IDS/IPS?</dt>
+          <dd>While no scanner is fully undetectable, VoidScan implements timing and packet crafting strategies to reduce detection risk.</dd>
+
+          <dt>Does VoidScan support IPv6?</dt>
+          <dd>Yes, IPv6 scanning is supported since version 0.3.0.</dd>
+
+          <dt>Can I contribute to VoidScan?</dt>
+          <dd>Yes! Contributions are welcome via Merge Requests on GitLab.</dd>
+
+          <dt>What licenses cover VoidScan?</dt>
+          <dd>VoidScan is released under the MIT license.</dd>
+        </dl>
+      </section>
+
+      <section id="roadmap">
+        <h2>🚀 Roadmap</h2>
+        <ul>
+          <li><strong>v0.4.0</strong> - Plugin system for custom scan modules.</li>
+          <li><strong>v0.5.0</strong> - GUI frontend for easier use.</li>
+          <li><strong>v0.6.0</strong> - Integration with common pentest frameworks.</li>
+          <li><strong>v1.0.0</strong> - Stable release with full documentation.</li>
+        </ul>
+      </section>
+
+      <section id="changelog">
+        <h2>📝 Changelog</h2>
+        <ul>
+          <li><strong>v0.3.1-alpha (2025-07-15)</strong> – Added detailed session logs with GPS tagging.</li>
+          <li><strong>v0.3.0 (2025-06-10)</strong> – Full IPv6 support, thread pool improvements.</li>
+          <li><strong>v0.2.0 (2025-03-05)</strong> – Added UDP scan mode.</li>
+          <li><strong>v0.1.0 (2023-11-20)</strong> – Initial release with TCP scan basics.</li>
+        </ul>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>&copy; 2025 VoidLab. No telemetry. No logs. Respect privacy.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
