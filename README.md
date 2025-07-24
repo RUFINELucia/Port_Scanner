@@ -1,3 +1,8 @@
+
+<p align="center">
+  <img src="assets/cyber-train-hacking-cagouler.png" alt="cyber-train-hacking-cagouler" width="400"/>
+</p>
+
 # 🔍 VoidScan — Port scanner minimaliste et furtif
 
 ## Sommaire
