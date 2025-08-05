@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="assets/cyber-train-hacking-cagouler.png" alt="cyber-train-hacking-cagouler" width="400"/>
+  <img src="assets/Avatar_final.png" alt="Avatar_final" width="400"/>
 </p>
 
 # 🔍 VoidScan — Port scanner minimaliste et furtif
