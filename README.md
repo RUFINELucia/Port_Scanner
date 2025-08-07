@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="assets/Avatar_final.jpg" alt="Avatar_final" width="400"/>
+  <img src="assets/lucia-rufine-logo.jpg.jpg" alt="Avatar_final" width="400"/>
 </p>
 
 # 🔍 VoidScan — Port scanner minimaliste et furtif
